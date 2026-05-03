@@ -32,9 +32,12 @@
             scroll-snap-stop: always;
         }
 
-        .v-section { background: rgba(0, 0, 0, 0.2); }
+        .v-section { 
+            background: rgba(0, 0, 0, 0.2); 
+            display: flex;
+        }
 
-        .video-wrapper {
+        .frame-container {
             height: 100%;
             width: 100%;
             display: flex;
@@ -43,85 +46,79 @@
             position: relative;
         }
 
-        video { height: 100%; max-width: 100%; object-fit: contain; z-index: 1; }
+        /* MEDIA UTAMA (Gambar & Video) agar ukurannya identik */
+        .media-content {
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            display: block;
+            z-index: 1;
+        }
 
         .content {
             position: absolute;
             z-index: 10;
             text-align: center;
             color: #fff;
-            width: 85%;
-            max-width: 400px;
-            padding: 20px;
+            width: 80%;
+            max-width: 350px;
         }
 
-        /* LINE ART KHUSUS HALAMAN UCAPAN */
+        /* Dekorasi Line Art Hitam pada Ucapan */
         .line-art-container {
             position: relative;
-            padding: 40px 20px;
+            padding: 30px 10px;
         }
 
-        /* Ikon Line Art Hitam (Atas & Bawah) */
         .line-art-container::before, .line-art-container::after {
             content: "";
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            width: 150px;
-            height: 60px;
+            width: 120px;
+            height: 50px;
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            filter: brightness(0); /* Membuat line art jadi hitam pekat */
-            opacity: 0.8;
+            filter: brightness(0); /* Line art jadi hitam */
+            opacity: 0.7;
             pointer-events: none;
         }
 
-        .line-art-container::before {
-            top: -20px;
-            background-image: url('https://www.transparentpng.com/download/floral/floral-line-art-png-7.png'); 
-        }
-
-        .line-art-container::after {
-            bottom: -20px;
-            transform: translateX(-50%) rotate(180deg);
-            background-image: url('https://www.transparentpng.com/download/floral/floral-line-art-png-7.png');
-        }
+        .line-art-container::before { top: -15px; background-image: url('https://www.transparentpng.com/download/floral/floral-line-art-png-7.png'); }
+        .line-art-container::after { bottom: -15px; transform: translateX(-50%) rotate(180deg); background-image: url('https://www.transparentpng.com/download/floral/floral-line-art-png-7.png'); }
 
         .btn { 
             background: #fff; color: #000; padding: 10px 25px; border: none; 
             border-radius: 50px; font-weight: bold; cursor: pointer; 
             margin-top: 15px; display: inline-block; text-decoration: none;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            position: relative;
-            z-index: 11;
         }
 
         #countdown { 
-            font-size: 1.1rem; margin: 15px 0; padding: 10px; 
+            font-size: 1rem; margin: 10px 0; padding: 8px; 
             background: rgba(255,255,255,0.2); border-radius: 10px; 
             backdrop-filter: blur(5px);
         }
 
-        .rek-info { color: #fff; font-size: 1.1rem; text-shadow: 2px 2px 4px #000; }
+        .rek-info { color: #fff; text-shadow: 2px 2px 4px #000; margin-bottom: 10px; font-size: 1.1rem; }
         
         .wish-container { 
             background: rgba(0, 0, 0, 0.3); padding: 10px; border-radius: 10px; 
-            max-height: 140px; overflow-y: auto; margin-top: 15px; text-align: left;
-            border: 1px solid rgba(0,0,0,0.2);
+            max-height: 120px; overflow-y: auto; margin-top: 10px; text-align: left;
         }
         
-        .wish-item { border-bottom: 1px solid rgba(0,0,0,0.2); padding: 5px; font-size: 0.8rem; color: #fff; }
+        .wish-item { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 5px; font-size: 0.8rem; color: #fff; }
 
         textarea {
-            width: 100%; height: 70px; margin-top: 10px; padding: 10px;
+            width: 100%; height: 65px; margin-top: 5px; padding: 10px;
             border-radius: 10px; border: 1px solid #000; background: rgba(255,255,255,0.9);
-            font-family: inherit; color: #000;
+            font-family: inherit;
         }
 
         @media (min-width: 1024px) {
             .v-section { justify-content: flex-end; padding-right: 5%; }
-            .video-wrapper { width: 50%; }
+            .frame-container { width: 50%; }
         }
     </style>
 </head>
@@ -129,35 +126,38 @@
 
     <audio id="bgMusic" loop><source src="Lestari.mp3" type="audio/mpeg"></audio>
 
-    <!-- Hal 1 -->
-    <section id="halaman1">
-        <div class="content" data-aos="fade-up">
-            <h2 id="namaTamu" style="font-size: 2.8rem; text-shadow: 2px 2px 5px #000;">Tamu Undangan</h2>
-            <div id="countdown"></div>
-            <button class="btn" onclick="startUndangan()">BUKA UNDANGAN</button>
+    <!-- Halaman 1: Ukuran Presisi dengan Background Pilihan -->
+    <section class="v-section">
+        <div class="frame-container">
+            <img src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/HALAMAN%201.jpg" class="media-content">
+            <div class="content" data-aos="fade-up">
+                <h2 id="namaTamu" style="font-size: 2.2rem; text-shadow: 2px 2px 5px #000;">Tamu Undangan</h2>
+                <div id="countdown">Memuat...</div>
+                <button class="btn" onclick="startUndangan()">BUKA UNDANGAN</button>
+            </div>
         </div>
     </section>
 
-    <!-- Hal 2 - 6 Video -->
-    <section class="v-section"><div class="video-wrapper"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/2.mp4" muted playsinline></video></div></section>
-    <section class="v-section"><div class="video-wrapper"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/3.mp4" muted playsinline></video></div></section>
+    <!-- Video Sections (Diberi preload="none" agar web ringan) -->
+    <section class="v-section"><div class="frame-container"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/2.mp4" class="media-content" muted playsinline preload="none"></video></div></section>
+    <section class="v-section"><div class="frame-container"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/3.mp4" class="media-content" muted playsinline preload="none"></video></div></section>
     
     <section class="v-section">
-        <div class="video-wrapper">
-            <video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/4.mp4" muted playsinline></video>
+        <div class="frame-container">
+            <video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/4.mp4" class="media-content" muted playsinline preload="none"></video>
             <div class="content" data-aos="zoom-in">
                 <a href="https://maps.app.goo.gl/kFyUXfsqtE4CioL49?g_st=iw" target="_blank" class="btn">LIHAT MAPS</a>
             </div>
         </div>
     </section>
 
-    <section class="v-section"><div class="video-wrapper"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/5.mp4" muted playsinline></video></div></section>
-    <section class="v-section"><div class="video-wrapper"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/6.mp4" muted playsinline></video></div></section>
+    <section class="v-section"><div class="frame-container"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/5.mp4" class="media-content" muted playsinline preload="none"></video></div></section>
+    <section class="v-section"><div class="frame-container"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/6.mp4" class="media-content" muted playsinline preload="none"></video></div></section>
 
-    <!-- Hal 7: Gift -->
+    <!-- Halaman 7: Gift -->
     <section class="v-section">
-        <div class="video-wrapper">
-            <video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/7.mp4" muted playsinline></video>
+        <div class="frame-container">
+            <video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/7.mp4" class="media-content" muted playsinline preload="none"></video>
             <div class="content" data-aos="fade-up">
                 <div class="rek-info">
                     <p><strong>BCA: 1234567890</strong></p>
@@ -168,13 +168,13 @@
         </div>
     </section>
 
-    <!-- Hal 8: Wish dengan Line Art Hitam -->
+    <!-- Halaman 8: Wish Real-time -->
     <section class="v-section">
-        <div class="video-wrapper">
-            <video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/8.mp4" muted playsinline></video>
+        <div class="frame-container">
+            <video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/8.mp4" class="media-content" muted playsinline preload="none"></video>
             <div class="content" data-aos="fade-up">
                 <div class="line-art-container">
-                    <textarea id="msg" placeholder="Tuliskan ucapan dan harapan Anda..."></textarea>
+                    <textarea id="msg" placeholder="Tuliskan ucapan dan doa Anda..."></textarea>
                     <button class="btn" onclick="sendWish()">KIRIM UCAPAN</button>
                     <div class="wish-container" id="wBox"></div>
                 </div>
@@ -182,7 +182,7 @@
         </div>
     </section>
 
-    <section class="v-section"><div class="video-wrapper"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/9.mp4" muted playsinline></video></div></section>
+    <section class="v-section"><div class="frame-container"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/9.mp4" class="media-content" muted playsinline preload="none"></video></div></section>
 
     <!-- Firebase & AOS -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -190,9 +190,9 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        AOS.init();
+        AOS.init({ once: true }); // Meringankan beban animasi
 
-        // KONFIGURASI FIREBASE (Ganti dengan milik Anda)
+        // FIREBASE CONFIG - Silakan lengkapi data proyek Anda
         const firebaseConfig = {
             apiKey: "ISI_API_KEY",
             authDomain: "PROYEK.firebaseapp.com",
@@ -213,13 +213,12 @@
         // Countdown
         const target = new Date("May 28, 2026 00:00:00").getTime();
         setInterval(() => {
-            const now = new Date().getTime();
-            const diff = target - now;
+            const diff = target - new Date().getTime();
             const d = Math.floor(diff / 86400000);
             const h = Math.floor((diff % 86400000) / 3600000);
             const m = Math.floor((diff % 3600000) / 60000);
             const s = Math.floor((diff % 60000) / 1000);
-            document.getElementById('countdown').innerText = `${d} Hari ${h} Jam ${m} Menit ${s} Detik`;
+            document.getElementById('countdown').innerText = `${d} Hari ${h}:${m}:${s}`;
         }, 1000);
 
         function startUndangan() {
@@ -227,7 +226,7 @@
             window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
         }
 
-        // Observer Video
+        // Observer Video (Hanya play saat terlihat agar hemat memori)
         const obs = new IntersectionObserver((es) => {
             es.forEach(e => {
                 const v = e.target.querySelector('video');
@@ -236,7 +235,7 @@
                     v.onended = () => { v.pause(); v.currentTime = v.duration; };
                 } else if(v) { v.pause(); }
             });
-        }, { threshold: 0.7 });
+        }, { threshold: 0.6 });
         document.querySelectorAll('section').forEach(s => obs.observe(s));
 
         function copyRek(n) { navigator.clipboard.writeText(n); alert("Nomor Rekening Disalin!"); }
