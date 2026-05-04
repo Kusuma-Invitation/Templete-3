@@ -3,12 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Digital</title>
+    <title>Undangan Digital Puji Rahayu</title>
+
+    <!-- Meta Tags untuk WhatsApp / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Undangan Digital Puji Rahayu">
+    <meta property="og:description" content="Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/HALAMAN%201.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        html { scroll-snap-type: y mandatory; }
+        html { 
+            scroll-snap-type: y mandatory; 
+            scroll-behavior: smooth;
+        }
 
         body {
             width: 100%;
@@ -19,6 +32,8 @@
             background-attachment: fixed;
             overflow-x: hidden;
             background-color: #000;
+            /* Kunci scroll di awal */
+            overflow-y: hidden; 
         }
 
         section {
@@ -46,7 +61,6 @@
             position: relative;
         }
 
-        /* MEDIA UTAMA (Gambar & Video) agar ukurannya identik */
         .media-content {
             height: 100%;
             max-width: 100%;
@@ -64,30 +78,6 @@
             max-width: 350px;
         }
 
-        /* Dekorasi Line Art Hitam pada Ucapan */
-        .line-art-container {
-            position: relative;
-            padding: 30px 10px;
-        }
-
-        .line-art-container::before, .line-art-container::after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 50px;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            filter: brightness(0); /* Line art jadi hitam */
-            opacity: 0.7;
-            pointer-events: none;
-        }
-
-        .line-art-container::before { top: -15px; background-image: url('https://www.transparentpng.com/download/floral/floral-line-art-png-7.png'); }
-        .line-art-container::after { bottom: -15px; transform: translateX(-50%) rotate(180deg); background-image: url('https://www.transparentpng.com/download/floral/floral-line-art-png-7.png'); }
-
         .btn { 
             background: #fff; color: #000; padding: 10px 25px; border: none; 
             border-radius: 50px; font-weight: bold; cursor: pointer; 
@@ -103,6 +93,12 @@
 
         .rek-info { color: #fff; text-shadow: 2px 2px 4px #000; margin-bottom: 10px; font-size: 1.1rem; }
         
+        .bank-logo {
+            width: 150px;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+        }
+
         .wish-container { 
             background: rgba(0, 0, 0, 0.3); padding: 10px; border-radius: 10px; 
             max-height: 120px; overflow-y: auto; margin-top: 10px; text-align: left;
@@ -126,8 +122,8 @@
 
     <audio id="bgMusic" loop><source src="Lestari.mp3" type="audio/mpeg"></audio>
 
-    <!-- Halaman 1: Ukuran Presisi dengan Background Pilihan -->
-    <section class="v-section">
+    <!-- Section Pembuka (Akan dihapus setelah klik) -->
+    <section id="welcomeScreen" class="v-section">
         <div class="frame-container">
             <img src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/HALAMAN%201.jpg" class="media-content">
             <div class="content" data-aos="fade-up">
@@ -138,61 +134,61 @@
         </div>
     </section>
 
-    <!-- Video Sections (Diberi preload="none" agar web ringan) -->
-    <section class="v-section"><div class="frame-container"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/2.mp4" class="media-content" muted playsinline preload="none"></video></div></section>
-    <section class="v-section"><div class="frame-container"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/3.mp4" class="media-content" muted playsinline preload="none"></video></div></section>
-    
-    <section class="v-section">
-        <div class="frame-container">
-            <video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/4.mp4" class="media-content" muted playsinline preload="none"></video>
-            <div class="content" data-aos="zoom-in">
-                <a href="https://maps.app.goo.gl/kFyUXfsqtE4CioL49?g_st=iw" target="_blank" class="btn">LIHAT MAPS</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="v-section"><div class="frame-container"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/5.mp4" class="media-content" muted playsinline preload="none"></video></div></section>
-    <section class="v-section"><div class="frame-container"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/6.mp4" class="media-content" muted playsinline preload="none"></video></div></section>
-
-    <!-- Halaman 7: Gift -->
-    <section class="v-section">
-        <div class="frame-container">
-            <video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/7.mp4" class="media-content" muted playsinline preload="none"></video>
-            <div class="content" data-aos="fade-up">
-                <div class="rek-info">
-                    <p><strong>BCA: 1234567890</strong></p>
-                    <p>a.n. Nama Mempelai</p>
-                </div>
-                <button class="btn" onclick="copyRek('1234567890')">SALIN REKENING</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Halaman 8: Wish Real-time -->
-    <section class="v-section">
-        <div class="frame-container">
-            <video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/8.mp4" class="media-content" muted playsinline preload="none"></video>
-            <div class="content" data-aos="fade-up">
-                <div class="line-art-container">
-                    <textarea id="msg" placeholder="Tuliskan ucapan dan doa Anda..."></textarea>
-                    <button class="btn" onclick="sendWish()">KIRIM UCAPAN</button>
-                    <div class="wish-container" id="wBox"></div>
+    <!-- Konten Utama (Muncul setelah klik) -->
+    <div id="mainContent" style="display: none;">
+        <section class="v-section"><div class="frame-container"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/2.mp4" class="media-content" muted playsinline preload="none"></video></div></section>
+        <section class="v-section"><div class="frame-container"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/3.mp4" class="media-content" muted playsinline preload="none"></video></div></section>
+        
+        <section class="v-section">
+            <div class="frame-container">
+                <video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/4.mp4" class="media-content" muted playsinline preload="none"></video>
+                <div class="content" data-aos="zoom-in">
+                    <a href="https://maps.app.goo.gl/kFyUXfsqtE4CioL49?g_st=iw" target="_blank" class="btn">LIHAT MAPS</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="v-section"><div class="frame-container"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/9.mp4" class="media-content" muted playsinline preload="none"></video></div></section>
+        <section class="v-section"><div class="frame-container"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/5.mp4" class="media-content" muted playsinline preload="none"></video></div></section>
+        <section class="v-section"><div class="frame-container"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/6.mp4" class="media-content" muted playsinline preload="none"></video></div></section>
 
-    <!-- Firebase & AOS -->
+        <!-- Halaman 7: Gift -->
+        <section class="v-section">
+            <div class="frame-container">
+                <video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/7.mp4" class="media-content" muted playsinline preload="none"></video>
+                <div class="content" data-aos="fade-up">
+                    <div class="rek-info">
+                        <img src="https://raw.githubusercontent.com/Kusuma-Invitation/Templete-3/main/1.png" class="bank-logo" alt="Logo Bank">
+                        <p><strong>005701054003504</strong></p>
+                        <p>a.n. Puji Rahayu</p>
+                    </div>
+                    <button class="btn" onclick="copyRek('005701054003504')">SALIN REKENING</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="v-section">
+            <div class="frame-container">
+                <video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/8.mp4" class="media-content" muted playsinline preload="none"></video>
+                <div class="content" data-aos="fade-up">
+                    <div class="line-art-container">
+                        <textarea id="msg" placeholder="Tuliskan ucapan dan doa Anda..."></textarea>
+                        <button class="btn" onclick="sendWish()">KIRIM UCAPAN</button>
+                        <div class="wish-container" id="wBox"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="v-section"><div class="frame-container"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/9.mp4" class="media-content" muted playsinline preload="none"></video></div></section>
+    </div>
+
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        AOS.init({ once: true }); // Meringankan beban animasi
+        AOS.init({ once: false });
 
-        // FIREBASE CONFIG - Silakan lengkapi data proyek Anda
         const firebaseConfig = {
             apiKey: "ISI_API_KEY",
             authDomain: "PROYEK.firebaseapp.com",
@@ -210,7 +206,6 @@
         const tamu = urlParams.get('to') || "Tamu Undangan";
         document.getElementById('namaTamu').innerText = tamu;
 
-        // Countdown
         const target = new Date("May 28, 2026 00:00:00").getTime();
         setInterval(() => {
             const diff = target - new Date().getTime();
@@ -218,27 +213,46 @@
             const h = Math.floor((diff % 86400000) / 3600000);
             const m = Math.floor((diff % 3600000) / 60000);
             const s = Math.floor((diff % 60000) / 1000);
-            document.getElementById('countdown').innerText = `${d} Hari ${h}:${m}:${s}`;
+            const timerEl = document.getElementById('countdown');
+            if(timerEl) timerEl.innerText = `${d} Hari ${h}:${m}:${s}`;
         }, 1000);
 
         function startUndangan() {
             document.getElementById('bgMusic').play();
-            window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+            
+            const main = document.getElementById('mainContent');
+            main.style.display = 'block';
+            document.body.style.overflowY = 'auto';
+
+            const firstVideoSection = main.querySelector('section');
+            firstVideoSection.scrollIntoView({ behavior: 'smooth' });
+
+            setTimeout(() => {
+                document.getElementById('welcomeScreen').remove();
+                window.scrollTo(0, 0); 
+                AOS.refresh();
+                observeSections(); 
+            }, 800);
         }
 
-        // Observer Video (Hanya play saat terlihat agar hemat memori)
         const obs = new IntersectionObserver((es) => {
             es.forEach(e => {
                 const v = e.target.querySelector('video');
                 if (v && e.isIntersecting) {
                     v.currentTime = 0; v.play();
-                    v.onended = () => { v.pause(); v.currentTime = v.duration; };
                 } else if(v) { v.pause(); }
             });
         }, { threshold: 0.6 });
-        document.querySelectorAll('section').forEach(s => obs.observe(s));
+        
+        function observeSections() {
+            document.querySelectorAll('section').forEach(s => obs.observe(s));
+        }
+        observeSections();
 
-        function copyRek(n) { navigator.clipboard.writeText(n); alert("Nomor Rekening Disalin!"); }
+        function copyRek(n) { 
+            navigator.clipboard.writeText(n); 
+            alert("Nomor Rekening Puji Rahayu berhasil disalin!"); 
+        }
         
         function sendWish() {
             const m = document.getElementById('msg').value;
@@ -251,7 +265,8 @@
         wishRef.on('child_added', (snapshot) => {
             const data = snapshot.val();
             const html = `<div class="wish-item"><strong>${data.nama}:</strong> ${data.pesan}</div>`;
-            document.getElementById('wBox').insertAdjacentHTML('afterbegin', html);
+            const wBox = document.getElementById('wBox');
+            if(wBox) wBox.insertAdjacentHTML('afterbegin', html);
         });
     </script>
 </body>
