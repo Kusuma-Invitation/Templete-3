@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Digital Puji Rahayu</title>
 
-    <!-- Meta Tags untuk WhatsApp / Social Media -->
+    <!-- Meta Tags untuk WhatsApp / Social Media (Foto Terbaru) -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Undangan Digital Puji Rahayu">
     <meta property="og:description" content="Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/HALAMAN%201.jpg">
-    <meta property="og:image:type" content="image/jpeg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Kusuma-Invitation/Templete-3/main/ChatGPT%20Image%20May%202%2C%202026%2C%2007_49_05%20PM.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
@@ -32,7 +32,7 @@
             background-attachment: fixed;
             overflow-x: hidden;
             background-color: #000;
-            /* Kunci scroll di awal */
+            /* Scroll dikunci saat pertama kali dibuka */
             overflow-y: hidden; 
         }
 
@@ -122,7 +122,7 @@
 
     <audio id="bgMusic" loop><source src="Lestari.mp3" type="audio/mpeg"></audio>
 
-    <!-- Section Pembuka (Akan dihapus setelah klik) -->
+    <!-- Section Pembuka -->
     <section id="welcomeScreen" class="v-section">
         <div class="frame-container">
             <img src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/HALAMAN%201.jpg" class="media-content">
@@ -134,7 +134,7 @@
         </div>
     </section>
 
-    <!-- Konten Utama (Muncul setelah klik) -->
+    <!-- Konten Utama -->
     <div id="mainContent" style="display: none;">
         <section class="v-section"><div class="frame-container"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/2.mp4" class="media-content" muted playsinline preload="none"></video></div></section>
         <section class="v-section"><div class="frame-container"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/3.mp4" class="media-content" muted playsinline preload="none"></video></div></section>
@@ -151,7 +151,7 @@
         <section class="v-section"><div class="frame-container"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/5.mp4" class="media-content" muted playsinline preload="none"></video></div></section>
         <section class="v-section"><div class="frame-container"><video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/6.mp4" class="media-content" muted playsinline preload="none"></video></div></section>
 
-        <!-- Halaman 7: Gift -->
+        <!-- Halaman Gift: Puji Rahayu -->
         <section class="v-section">
             <div class="frame-container">
                 <video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/7.mp4" class="media-content" muted playsinline preload="none"></video>
@@ -166,6 +166,7 @@
             </div>
         </section>
 
+        <!-- Halaman Wish -->
         <section class="v-section">
             <div class="frame-container">
                 <video src="https://raw.githubusercontent.com/Kusuma-Invitation/Adat-Jawa/main/8.mp4" class="media-content" muted playsinline preload="none"></video>
@@ -222,11 +223,12 @@
             
             const main = document.getElementById('mainContent');
             main.style.display = 'block';
-            document.body.style.overflowY = 'auto';
+            document.body.style.overflowY = 'auto'; // Aktifkan scroll
 
             const firstVideoSection = main.querySelector('section');
             firstVideoSection.scrollIntoView({ behavior: 'smooth' });
 
+            // Hapus welcome screen agar tidak bisa scroll ke atas lagi
             setTimeout(() => {
                 document.getElementById('welcomeScreen').remove();
                 window.scrollTo(0, 0); 
